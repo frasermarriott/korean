@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Korean Tools</title>
+        <title>Conjugator</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -81,16 +81,18 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    한국어
+                    Conjugator
                 </div>
 
-                <div class="links">
-                    <a href="{{ url('conjugator') }}">Conjugator</a>
-                    <a href="{{ url('numbers') }}">Numbers</a>
-                    <a href="{{ url('vocabulary') }}">Vocabulary</a>
-                    <a href="{{ url('listening') }}">Listening</a>
-                    <a href="{{ url('wordoftheday') }}">Word of the day</a>
-                </div>
+                <input type="text" name="">
+
+                {{-- <div class="links">
+                    <a href="#">Conjugator</a>
+                    <a href="#">Numbers</a>
+                    <a href="#">Vocabulary</a>
+                    <a href="#">Listening</a>
+                    <a href="#">Word of the day</a>
+                </div> --}}
             </div>
         </div>
     </body>
