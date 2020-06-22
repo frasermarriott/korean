@@ -35,7 +35,15 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">My Dashboard</a>
+                        <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -56,7 +64,7 @@
                 <div data-verbix-conjugate-language='kor' data-verbix-conjugate-key='8f4b5b9b-ad4f-11ea-8527-e237142b3bef' class="input-group mb-3">
                     <input id="verb" type="text" class="form-control form-control-lg" placeholder="Enter a verb in Korean" aria-label="Enter a verb in Korean" required autofocus>
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" value="Go" onclick="showConjugationResults();verbix.conjugate(document.getElementById('verb').value);">Search</button>
+                        <button id="verb_search" class="btn btn-outline-secondary" type="button" value="Go" onclick="showConjugationResults();verbix.conjugate(document.getElementById('verb').value);">Search</button>
                     </div>
                     {{-- <input type="button" value="Go" onclick="verbix.conjugate(document.getElementById('verb').value);">  --}}
                 </div>

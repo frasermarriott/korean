@@ -10,3 +10,9 @@
 function showConjugationResults() {
   document.getElementById("conjugation-results").style.display = "flex";;
 }
+
+$("#verb").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#verb_search").click();
+    }
+});
