@@ -10,65 +10,28 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
-        
         {{-- Bootstrap --}}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {{-- Custom --}}
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+        
 
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+        <!-- Scripts -->
+        {{-- Verbix API --}}
+        <script src="https://verbix-api.nyc3.cdn.digitaloceanspaces.com/conjugator/v2.0.0.js"></script>
+        {{-- Custom --}}
+        <script src="{{ asset('js/custom.js') }}" defer></script>
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
     <body>
+
+
         <div class="flex-center position-ref full-height">
+
+            <div class="top-left links">
+                <a href="{{ url('/') }}">Home</a>
+            </div>
+
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -83,21 +46,52 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="content container">
                 <div class="title m-b-md">
                     Conjugator
                 </div>
 
-                <input type="text" class="form-control form-control-lg" name="search" placeholder="Search for a verb" autofocus>
+                {{-- <input type="text" class="form-control form-control-lg" name="search" placeholder="Search for a verb" autofocus> --}}
+
+                <div data-verbix-conjugate-language='kor' data-verbix-conjugate-key='8f4b5b9b-ad4f-11ea-8527-e237142b3bef' class="input-group mb-3">
+                    <input id="verb" type="text" class="form-control form-control-lg" placeholder="Enter a verb in Korean" aria-label="Enter a verb in Korean" required autofocus>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" value="Go" onclick="showConjugationResults();verbix.conjugate(document.getElementById('verb').value);">Search</button>
+                    </div>
+                    {{-- <input type="button" value="Go" onclick="verbix.conjugate(document.getElementById('verb').value);">  --}}
+                </div>
+
+{{--                 <div data-verbix-conjugate-tense='0'></div>
+                <div data-verbix-conjugate-tense='1'></div>
+                <div data-verbix-conjugate-tense='2'></div> --}}
 
 
-                {{-- <div class="links">
-                    <a href="#">Conjugator</a>
-                    <a href="#">Numbers</a>
-                    <a href="#">Vocabulary</a>
-                    <a href="#">Listening</a>
-                    <a href="#">Word of the day</a>
-                </div> --}}
+                <div class="card-group conjugation-results" id="conjugation-results">
+                  <div class="card">
+                    {{-- <div class="card-header">Past</div> --}}
+                    <div class="card-body">
+                      <h5 class="card-title">Past</h5>
+                      <p class="card-text" data-verbix-conjugate-tense='1'></p>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Present</h5>
+                      <p class="card-text" data-verbix-conjugate-tense='0'></p>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Future</h5>
+                      <p class="card-text" data-verbix-conjugate-tense='2'></p>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
             </div>
         </div>
 
