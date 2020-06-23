@@ -56,7 +56,7 @@
 
             <div class="content container">
                 <div class="title m-b-md">
-                    Conjugator
+                    Conjugator 
                 </div>
 
                 {{-- <input type="text" class="form-control form-control-lg" name="search" placeholder="Search for a verb" autofocus> --}}

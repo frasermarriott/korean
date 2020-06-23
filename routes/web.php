@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Arr;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,11 @@ Route::get('/conjugator', function () {
     return view('conjugator');
 });
 
+Route::get('/numbers', function () {
+    return view('numbers');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
